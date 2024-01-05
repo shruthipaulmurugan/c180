@@ -1,0 +1,27 @@
+<head>
+</head>
+<body>
+$.ajax({
+    url: "https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}"
+    type: "get",
+    success: function(response){
+        let name = response.name
+        let weather = response.weather[0].main
+        $("#scene_container").append(
+            `
+            <a-entity gps-entity-place="latitude: ${steps[i].manuever.location[1]}; longitude: ${steps[i].manuever.location[0]};">
+                <a-entity>
+                    <a-text height="50" value="weather forecast is ${weather} at ${name}"></a-text>
+                </a-entity>
+            </a-entity>
+        )
+    }
+})
+
+<a-scene vr-mode-ui="enable: false" embedded arjs="sourceType: webcam; debugUIEnabled: false;"
+    id="scene_container">
+    <a-camera gps-camera rotation-reader minDistance="1" positionMinAccuracy="0"></a-camera>
+</a-scene>
+
+
+</body>
